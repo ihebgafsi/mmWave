@@ -25,3 +25,6 @@ m, logits = evaluate(model, te, keys=["camera"])
 save_results("CAM-E1", seed, m, config_dict, ckpt_path, params, secs, test_logits=logits)
 ```
 Modalities: `camera` (3,224,400) | `radar` (4,256,250) | `radar_ra` (1,256,64) | `lidar` (3,128,128) | `lidar_pts` (4096,3) | `gps` (5,)
+
+## Metrics / aggregation
+`evaluate()` returns top1/3/5, K90, K95, overhead, gain. After runs: `python -m common.aggregate` -> `results/summary.csv` (mean ± std over seeds).

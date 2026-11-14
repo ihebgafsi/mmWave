@@ -14,6 +14,9 @@ Save logits + embeddings of the best one.
 ## P2: F4 Cross-attention fusion
 Modality tokens (one per embedding) -> small transformer encoder or cross-attention -> head. Report all-4, drop-one, best pair.
 
+### P2 combos to test (F4)
+Fixed set: `GPS+LiDAR`, `GPS+Radar`, `LiDAR+Radar`, `GPS+LiDAR+Radar`, `all 4`, `all 4 minus camera`. Your focus: attention weights per modality; does camera ever get attention at night? Extra: GPS-free version (`LiDAR+Radar+Camera`) vs GPS-E3.
+
 ## P3 bonus: Temporal tracking + adaptive sweep
 (a) Best fusion with `history=K`: Top-K, and beam-switch jitter (switches/s) vs frame-by-frame.
 (b) Adaptive sweep: choose K per sample from model confidence (e.g. smallest K with cumulative prob >= tau) -> avg beams swept vs accuracy curve.
@@ -22,3 +25,5 @@ Modality tokens (one per embedding) -> small transformer encoder or cross-attent
 
 ## Deliver
 `results/GPS-E*`, F4 results, tracking + adaptive-sweep results, master table, `notes.md`.
+
+**Metrics reminder:** report Top-1/3/5, **K90, K95**, gain = 1-K/64 on test (mean±std, 3 seeds). Goal: K90 below GPS-E3's 5.

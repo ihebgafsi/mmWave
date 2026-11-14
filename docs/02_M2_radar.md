@@ -14,8 +14,13 @@ Save logits + embeddings of the best one.
 ## P2: F2 Feature concatenation
 Concat penultimate embeddings of all 4 best unimodal models -> MLP head. Compare frozen vs end-to-end fine-tune (only if time). Report all-4, drop-one, best pair.
 
+### P2 combos to test (F2)
+Fixed set: `GPS+LiDAR`, `GPS+Radar`, `LiDAR+Radar`, `GPS+LiDAR+Radar`, `all 4`, `all 4 minus camera`. Your focus: does radar's range/velocity fix GPS failures (e.g. high speed rows)? Extra combo: `Radar+Camera`.
+
 ## P3 bonus: Robustness
 On the best fusion model: (a) drop each sensor at test, (b) degrade (`transforms=` hook: camera darkening/occlusion patch, LiDAR point dropout, radar noise, GPS noise), (c) retrain with `mod_drop` 0.2/0.5 and show recovery. One robustness plot.
 
 ## Deliver
 `results/RAD-E*`, F2 results, robustness table/plot, `notes.md`.
+
+**Metrics reminder:** report Top-1/3/5, **K90, K95**, gain = 1-K/64 on test (mean±std, 3 seeds). Goal: K90 below GPS-E3's 5.
