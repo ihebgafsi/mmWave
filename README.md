@@ -1,5 +1,9 @@
 # DeepSense 6G scenario 33: beam prediction
 
+
+## Preliminary Notes
+- Since we wanted to do everything on Kaggle, and since the DeepSense Scenarios need multi-step authentication. Haythem engineered a pipeline that uploaded all the scenarios (+400GB) to Kaggle, accessible via the [Catalog][https://www.kaggle.com/datasets/haythemkrid/deepsense6g-catalog].
+
 ## Setup (every teammate, Kaggle)
 1. Upload this folder as a Kaggle Dataset (or `git clone`). Add the scenario-33 dataset as input.
 2. **M1 only, once:** build everything, then publish `/kaggle/working/ds6g` as Kaggle dataset `ds6g-cache` and commit `splits/splits.json`.
@@ -28,3 +32,5 @@ Modalities: `camera` (3,224,400) | `radar` (4,256,250) | `radar_ra` (1,256,64) |
 
 ## Metrics / aggregation
 `evaluate()` returns top1/3/5, K90, K95, overhead, gain. After runs: `python -m common.aggregate` -> `results/summary.csv` (mean ± std over seeds).
+
+
