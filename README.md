@@ -2,7 +2,8 @@
 
 
 ## Preliminary Notes
-- Since we wanted to do everything on Kaggle, and since the DeepSense Scenarios need multi-step authentication. Haythem engineered a pipeline that uploaded all the scenarios (+400GB) to Kaggle, accessible via the [Catalog][https://www.kaggle.com/datasets/haythemkrid/deepsense6g-catalog].
+- Since we wanted to do everything on Kaggle, and since the DeepSense Scenarios need multi-step authentication. Haythem engineered a pipeline that uploaded all the scenarios (+400GB) to Kaggle, accessible via the [Catalog](https://www.kaggle.com/datasets/haythemkrid/deepsense6g-catalog).
+- All of our weights, embeddings, and results are found in this [Drive](https://drive.google.com/drive/folders/1m_6KqQr4QVNpg3bj_Tn9IkFqKOc8MPbM)
 
 ## Setup (every teammate, Kaggle)
 1. Upload this folder as a Kaggle Dataset (or `git clone`). Add the scenario-33 dataset as input.
