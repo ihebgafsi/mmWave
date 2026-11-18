@@ -2,10 +2,31 @@
 
 Research code and experiment record for predicting a useful 60 GHz mmWave beam from vehicle sensors, with the goal of reducing the number of beams that must be tested compared with an exhaustive 64-beam sweep.
 
-> **Paper and implementation:** [Manuscript](manuscript/paper.pdf) · [Official implementation repository](https://github.com/ihebgafsi/mmWave)
+<p align="center">
+  <a href="manuscript/paper.pdf"><img src="https://img.shields.io/badge/Paper-Read%20the%20PDF-B31B1B?style=for-the-badge&logo=adobeacrobatreader&logoColor=white" alt="Read the paper"></a>
+  <a href="presentation/MmWave.pdf"><img src="https://img.shields.io/badge/Slides-View%20presentation-6C63FF?style=for-the-badge&logo=googlepresentations&logoColor=white" alt="View the presentation"></a>
+  <a href="https://github.com/ihebgafsi/mmWave"><img src="https://img.shields.io/badge/Code-Official%20implementation-181717?style=for-the-badge&logo=github" alt="Official implementation"></a>
+  <a href="https://www.kaggle.com/datasets/haythemkrid/deepsense6g-catalog"><img src="https://img.shields.io/badge/Data-DeepSense%206G-20BEFF?style=for-the-badge&logo=kaggle&logoColor=white" alt="DeepSense 6G data catalog"></a>
+</p>
 
 **Authors:** Iheb Gafsi, Omar Sagga, Roumaissa Fezai, Haythem Krid, and Mariem Afif  
 **Affiliation:** National Institute of Applied Sciences and Technology (INSAT), University of Carthage
+
+<p align="center">
+  <a href="manuscript/paper.pdf"><img src="assets/paper-cover-1.png" width="48%" alt="First page of the paper"></a>
+  <a href="presentation/MmWave.pdf"><img src="assets/presentation-cover-01.png" width="48%" alt="First slide of the presentation"></a>
+</p>
+<p align="center"><sub>Paper and presentation covers — click either preview to open the full PDF.</sub></p>
+
+> **Headline result (from the manuscript):** GPS is the strongest single modality (Top-1 55.6%, K90 = 5). Calibrated late fusion of GPS and camera reduces K90 to 4.33, corresponding to an estimated 93.2% fewer beams than an exhaustive 64-beam sweep. Sweep reduction is a beam-count estimate, not measured latency.
+
+## How to read this repository
+
+1. **Start with the [paper](manuscript/paper.pdf)** for the research question, related work, experiments, results, and limitations; use the [presentation](presentation/MmWave.pdf) for a short visual overview.
+2. **Check the shared protocol** in [`docs/00_GENERAL.md`](docs/00_GENERAL.md), then [`common/`](common/) for the actual data, split, and metric implementations.
+3. **Explore experiments** in the [notebook index](#experiment-notebook-index). The notebooks hold the detailed model and analysis work; they are not all packaged as standalone training scripts.
+4. **Reproduce data preparation** with the [cache instructions](#reproducing-the-shared-data-pipeline). Raw data and large generated artifacts are external.
+5. **Use the [references](#references)** to follow the beam-prediction and multimodal-fusion literature.
 
 ## Research question
 
@@ -138,3 +159,11 @@ For fusion, `get_loaders` accepts multiple modality keys. Validation and test lo
 - Fusion results should be compared against GPS as well as unimodal vision/radar/LiDAR results; adding a modality does not by itself establish an improvement.
 
 For the full shared protocol and per-modality experiment guidance, see [`docs/00_GENERAL.md`](docs/00_GENERAL.md) and the modality notes in [`docs/`](docs/).
+
+## References
+
+- Gafsi, I., Sagga, O., Fezai, R., Krid, H., and Afif, M. **“Fewer Degrees of Freedom, Fewer Beams: Calibrated Late Fusion for Multimodal mmWave Beam Prediction on DeepSense 6G.”** See the [project manuscript](manuscript/paper.pdf) and [official implementation](https://github.com/ihebgafsi/mmWave).
+- Va, V., Choi, J., and Heath, R. W. **“Inverse Multipath Fingerprinting for Millimeter Wave V2I Beam Alignment.”** [Paper (U.S. DOT repository)](https://rosap.ntl.bts.gov/view/dot/32606/dot_32606_DS1.pdf).
+- Rezaie, A., et al. **“Location- and Orientation-Aided Millimeter Wave Beam Selection Using Deep Learning.”** [IEEE ICC, 2020](https://doi.org/10.1109/ICC40277.2020.9149272).
+- Morais, J., Behboodi, A., Pezeshki, H., and Alkhateeb, A. **“Position-Aided Beam Prediction in the Real World: How Useful GPS Locations Actually are?”** [IEEE ICC, 2023](https://doi.org/10.1109/ICC45041.2023.10278998).
+- Alkhateeb, A., et al. **DeepSense 6G dataset and scenario resources.** [Dataset catalog](https://www.kaggle.com/datasets/haythemkrid/deepsense6g-catalog). Additional vision, radar, LiDAR, and fusion references are listed in the [manuscript bibliography](manuscript/paper.pdf).
